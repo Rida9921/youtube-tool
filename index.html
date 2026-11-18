@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouTube Tool — personal channel management utility</title>
+<meta name="description" content="A personal desktop utility for publishing videos, scheduling posts, reading statistics and replying to comments on a single YouTube channel using the official YouTube Data API v3.">
+<style>
+  :root{
+    --ink:#1d1e23; --muted:#5b6070; --line:#e6e8ef;
+    --blue:#4e7cf6; --purple:#9b72cb; --pink:#ec8fb5;
+    --bg:#fbfbfa;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:56px 24px 88px}
+  .mark{
+    width:56px;height:56px;border-radius:16px;
+    background:linear-gradient(135deg,var(--blue),var(--purple) 55%,var(--pink));
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 24px rgba(78,124,246,.28);margin-bottom:24px;
+  }
+  .mark svg{width:26px;height:26px}
+  h1{font-size:clamp(30px,5vw,42px);line-height:1.15;letter-spacing:-.02em;margin:0 0 12px}
+  .tag{font-size:19px;color:var(--muted);margin:0 0 36px;max-width:56ch}
+  h2{font-size:19px;letter-spacing:-.01em;margin:40px 0 14px}
+  p{margin:0 0 14px}
+  ul{margin:0 0 14px;padding-left:20px}
+  li{margin:0 0 8px}
+  .card{
+    background:#fff;border:1px solid var(--line);border-radius:18px;
+    padding:22px 24px;margin:0 0 18px;
+    box-shadow:0 1px 2px rgba(20,24,44,.04),0 12px 28px rgba(20,24,44,.05);
+  }
+  .grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin:18px 0 0}
+  .pill{
+    border:1px solid var(--line);border-radius:14px;padding:14px 16px;
+    font-size:14.5px;color:var(--muted);background:#fff;
+  }
+  .pill b{display:block;color:var(--ink);font-size:14.5px;margin-bottom:2px}
+  code{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    font-size:.9em;background:#f1f3f9;border-radius:6px;padding:2px 6px;
+  }
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(78,124,246,.35)}
+  a:hover{border-bottom-color:var(--blue)}
+  .note{
+    font-size:14px;color:var(--muted);border-left:3px solid var(--line);
+    padding-left:14px;margin:28px 0 0;
+  }
+  footer{margin-top:52px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="mark" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2.5" y="5" width="19" height="14" rx="3.5"/>
+      <path d="M10 9.5l4.5 2.5L10 14.5z" fill="#fff" stroke="none"/>
+    </svg>
+  </div>
+
+  <h1>YouTube Tool</h1>
+  <p class="tag">
+    A small desktop utility that lets one person manage their own YouTube channel:
+    publish videos, schedule releases, read statistics and reply to comments.
+  </p>
+
+  <div class="card">
+    <h2 style="margin-top:0">What it does</h2>
+    <div class="grid">
+      <div class="pill"><b>Publish</b>Upload a video file with title, description, tags and category.</div>
+      <div class="pill"><b>Schedule</b>Set a release date and let the video go public at that time.</div>
+      <div class="pill"><b>Statistics</b>List recent videos with views, likes and comment counts.</div>
+      <div class="pill"><b>Comments</b>Read new comments, reply, and moderate them.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">How it works</h2>
+    <p>
+      The tool is a single command-line program that runs on the owner's own computer. It connects to
+      the official <strong>YouTube Data API v3</strong> using OAuth 2.0, after the account owner has
+      explicitly granted access on Google's consent screen.
+    </p>
+    <p>
+      There is no server, no account system, no database and no analytics. The authorization token is
+      stored in a local file on the same computer (<code>token.json</code>) and can be deleted at any time.
+    </p>
+    <p>
+      The tool acts only on the channel of the person who authorized it, and only when that person
+      runs a command. Nothing happens in the background.
+    </p>
+  </div>
+
+  <div class="card">
+    <h2 style="margin-top:0">Data &amp; privacy</h2>
+    <p>
+      The tool requests a single permission: <code>https://www.googleapis.com/auth/youtube</code>,
+      which allows it to manage the authorized channel on the user's behalf.
+    </p>
+    <p>
+      Read the full <a href="./privacy.html">Privacy Policy</a> for details on what is accessed,
+      where it is stored, and how to revoke access.
+    </p>
+  </div>
+
+  <p class="note">
+    This is a private, non-commercial utility built for a single channel owner. It is not affiliated
+    with, endorsed by, or sponsored by Google LLC or YouTube. “YouTube” is a trademark of Google LLC.
+  </p>
+
+  <footer>
+    Contact: <a href="mailto:leadergregoire99@gmail.com">leadergregoire99@gmail.com</a><br>
+    Last updated: 18 November 2026
+  </footer>
+
+</div>
+</body>
+</html>
